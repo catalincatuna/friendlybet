@@ -1,0 +1,5 @@
+Premier League id : 237{"season_id":1980,"name":"21\/22","is_current":1,"country_id":42,"league_id":237,"start_date":"2021-08-14","end_date":"2022-05-22"}
+
+
+api for matches in the last premier league season : 
+https://app.sportdataapi.com/api/v1/soccer/matches?apikey=dd3fb5c0-ef41-11ec-8b0e-c5786e7c8139&season_id=1980&date_from=2021-08-14

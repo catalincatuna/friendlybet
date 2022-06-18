@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "description": "https://github.com/mui/material-ui/blob/v5.8.3/docs/data/material/components/app-bar/ResponsiveAppBar.js",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "name": "ResponsiveAppBar demo — Material UI"
+}

@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import Navbar from "./components/Navbar";
+import { StyledEngineProvider } from "@mui/material/styles";
+import FormDialog from "./components/Button";
+import request from "request";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// var request = require("request");
+
+var options = {
+  url:
+    "https://app.sportdataapi.com/api/v1/soccer/leagues?apikey=da2cefa0-eccd-11ec-b1b2-d329038c8fe7&country_id=237",
+};
+
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body);
+    console.log("asd");
+  }
 }
 
+request(options, callback);
+
+const App = () => {
+  return (
+    <>
+      <StyledEngineProvider injectFirst>
+        <Navbar />
+        <div
+          style={{
+            padding: "300px",
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <FormDialog />
+        </div>
+      </StyledEngineProvider>
+    </>
+  );
+};
 export default App;
