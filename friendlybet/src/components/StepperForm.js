@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { UserContext } from "../App";
+import request from "request";
 
 const steps = ["Select bet size", "Select sport", "Insert address"];
 const pages = [
@@ -152,12 +154,36 @@ const top100Films = [
 ];
 
 export function Page2() {
-  const options = top100Films.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
+  // const { matchData } = React.useContext(UserContext);
+  const [data, setData] = React.useState(null);
+
+  var options = {
+    url:
+      "https://app.sportdataapi.com/api/v1/soccer/matches?apikey=dd3fb5c0-ef41-11ec-8b0e-c5786e7c8139&season_id=1980&date_from=2021-08-14",
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      setData(JSON.parse(body));
+      console.log("asd");
+    }
+  }
+  React.useEffect(() => {
+    request(options, callback);
+  }, []);
+
+  data ? console.log(data.query) : console.log("data note fetched");
+
+  let matchData = data.data;
+
+  const options = matchData.map((match) => {
+    const firstLetter = match.match_id[0].toUpperCase();
+    return (
+      data && {
+        firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
+        ...match,
+      }
+    );
   });
 
   return (
